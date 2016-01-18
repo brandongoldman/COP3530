@@ -10,13 +10,12 @@ using namespace std;
 void insertionSort(int array[], int size);
 void printArray(int array[], int size);
 
+/* 	1. Enter size of array
+	2. Create an array of that size
+	3. Input elements in the array
+*/
 int main()
 {
-	/* 	1. Enter size of array
-		2. Create an array of that size
-		3. Input elements in the array
-	*/
-
 	// take in size of array
 	int size;
 	cin >> size;
@@ -38,7 +37,16 @@ int main()
 	return 0;
 }
 
-
+/*	The insertion sort algorithm used here was derived
+	from the presentation slides provided in class.
+	
+	The below code will sort the int array and sort in 
+	increasing order.
+	
+	Ex:
+		before: 9 8 13 2 7
+		after: 2 7 8 9 13 
+*/
 void insertionSort(int array[], int size){
 	int temp, j;
 	for (int i = 0; i < size - 1; i++) {
@@ -52,6 +60,7 @@ void insertionSort(int array[], int size){
     }
 }
 
+/*	Print the array to the console */
 void printArray(int array[], int size){
 	cout << "\n";
 	for(int i = 0; i < size; i++){
