@@ -5,7 +5,7 @@
 void Addition()
 {
 	int index_M1 = 0, index_M2 = 0;			// start with initial index -> value = 0
-	int tempCol, tempValue;
+	int dummy_value_Col, dummy_value;		// these will help us create temporary indexes
 	
 	// keep track of node head for matrix 1 and 2
 	currentNode = head;
@@ -58,14 +58,14 @@ void Addition()
             currentNode->ptr = temp_next_element_M2;
             temp_next_element_M2->ptr = temp_next_element;
 			
-            tempCol = temp_next_element_M2->col;
-            tempValue = temp_next_element_M2->values;
+            dummy_value_Col = temp_next_element_M2->col;
+            dummy_value = temp_next_element_M2->values;
 			
             temp_next_element_M2->col = currentNode->col;
-            currentNode->col = tempCol;
+            currentNode->col = dummy_value_Col;
 			
             temp_next_element_M2->values = currentNode->values;
-            currentNode->values = tempValue;
+            currentNode->values = dummy_value;
 			
             currentNode = currentNode->ptr;
             --index_M2;
