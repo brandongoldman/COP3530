@@ -133,7 +133,7 @@ void Addition()
         	{
                 currentNode = currentNode->ptr;
             }
-            --index_M1;
+        --index_M1;
         }
 		
         else if((currentNode->col == currentNode_M2->col) && index_M1 > 0 && index_M2 > 0)
@@ -352,19 +352,13 @@ int main()
 ***** Garbage Collection *****
 *****************************/	
 	
-	// free up memory from matrix 1
+	// free up memory from matrix 1 and 2
     for(int i = 0; i < numRows; i++)
     {
         head = matrix1[i];
-        Deallocate();
-    }
-	
-	// free up memory from matrix 2
-    for(int i = 0; i < numRows; i++)
-    {
         head = matrix2[i];
         Deallocate();
     }
-    
+        
     return 0;
 }
