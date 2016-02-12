@@ -120,21 +120,6 @@ void Addition()
             {
                 currentNode_M2 = head2;
             }
-			
-            currentNode->ptr = temp_next_element_M2;
-            temp_next_element_M2->ptr = temp_next_element;
-			
-            dummy_Col = temp_next_element_M2->col;
-            dummy_value = temp_next_element_M2->values;
-			
-            temp_next_element_M2->col = currentNode->col;
-            currentNode->col = dummy_Col;
-			
-            temp_next_element_M2->values = currentNode->values;
-            currentNode->values = dummy_value;
-			
-            currentNode = currentNode->ptr;
-            --index_M2;
         }
 		
         else if((currentNode_M2->col < currentNode->col) && index_M2 == 0)
@@ -149,21 +134,6 @@ void Addition()
                 currentNode = currentNode->ptr;
             }
             --index_M1;
-        }
-		
-        else if((currentNode->col < currentNode_M2->col) && index_M1 == 0)
-        {
-        	while(currentNode_M2 != NULL)
-        	{
-			temp_next_element = currentNode->ptr;
-			temp_next_element_M2 = currentNode_M2;
-				
-			currentNode_M2 = currentNode_M2->ptr;		// ptr points to next element
-			currentNode->ptr = temp_next_element_M2;
-				
-			temp_next_element_M2->ptr = temp_next_element;
-			--index_M2;
-        	}
         }
 		
         else if((currentNode->col == currentNode_M2->col) && index_M1 > 0 && index_M2 > 0)
