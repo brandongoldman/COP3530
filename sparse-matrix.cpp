@@ -12,13 +12,13 @@ using namespace std;
 ***** LinkedList *****
 *********************/
 
-struct LinkedList
+struct Matrix
 {
     int values; 
     int col;
-    LinkedList *ptr;
+    Matrix *ptr;
     
-    LinkedList(int col, int values)
+    Matrix(int col, int values)
     {
         this->col = col;
         this->values = values;
@@ -30,18 +30,18 @@ struct LinkedList
 ****************/
 
 // list of Nodes for Matrix 1
-LinkedList *head;
-LinkedList *currentNode;
-LinkedList *temp_next_element;
+Matrix *head;
+Matrix *currentNode;
+Matrix *temp_next_element;
 
 // list of Nodes for Matrix 2
-LinkedList *head2;
-LinkedList *currentNode_M2;
-LinkedList *temp_next_element_M2;
+Matrix *head2;
+Matrix *currentNode_M2;
+Matrix *temp_next_element_M2;
 
 void createNode(int colNum, int colVal)
 {
-    LinkedList *node = new LinkedList(colNum, colVal);
+    Matrix *node = new Matrix(colNum, colVal);
     node->ptr = NULL;
     node->col = colNum;
     node->values = colVal;
@@ -244,12 +244,12 @@ int main()
     cin >> numRows;
 	
 	// create array of pointers containing numRows pointers
-    LinkedList **matrix1 = new LinkedList*[numRows];
+    Matrix **matrix1 = new Matrix*[numRows];
 	
 	// create head node at beginning of each array index
     for(int i = 0; i < numRows; i++)
     {
-        matrix1[i] = new LinkedList(-1, 0);
+        matrix1[i] = new Matrix(-1, 0);
     }
 
     for (int i = 0; i < numRows; i++)
@@ -278,11 +278,11 @@ int main()
 *******************/
 
     cin >> numRows;
-    LinkedList **matrix2 = new LinkedList*[numRows];
+    Matrix **matrix2 = new Matrix*[numRows];
    
    for(int i = 0; i < numRows; i++)
     {
-        matrix2[i] = new LinkedList(-1, 0);
+        matrix2[i] = new Matrix(-1, 0);
     }
 
     for (int i = 0; i < numRows; i++)
