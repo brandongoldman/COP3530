@@ -3,6 +3,8 @@
 
 These notes were compiled using material found online as well as in the presentations provided by Professor Alipour.
 
+![much data such structure](http://www.hectormadrigal.com/wp-content/uploads/2013/09/i-have-no-idea-what-im-doing-dog.jpg)
+
 ## Table of Contents
 
 * [Sorting](#sorting)
