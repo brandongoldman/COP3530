@@ -6,16 +6,32 @@ These notes were compiled using material found online as well as in the presenta
 ## Table of Contents
 
 * [Sorting](#sorting)
-	* [Insertion](#insertion)
+* [LinkedList](#linkedlist)
 
 
 ## Sorting
 
 * Definition
+* 
+
+*Shoutout to the coding prodigy [@nickbryanmiller](https://github.com/nickbryanmiller/DataStructuresAndAlgorithms/blob/master/Sorting%20Algorithms/SortingAlgorithms.cpp) for compiling some of the code used below!*
 	
-### Insertion
+### Insertion Sort
+```
+// code for insertion sort
+cout << "Hello World!";
+```
 * bullet
   * bullet 2
-	
-	```code
-	```
+
+### Bubble Sort
+### Selection Sort
+### Count Sort
+### Shaker Sort
+### Shell Sort
+### Heap Sort
+### Merge Sort
+### Quick Sort
+
+
+## LinkedList
