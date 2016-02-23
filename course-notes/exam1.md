@@ -8,6 +8,7 @@ These notes were compiled using material found online as well as in the presenta
 * [Sorting](#sorting)
 * [LinkedList](#linkedlist)
 
+---
 
 ## Sorting
 
@@ -33,5 +34,6 @@ cout << "Hello World!";
 ### Merge Sort
 ### Quick Sort
 
+---
 
 ## LinkedList
