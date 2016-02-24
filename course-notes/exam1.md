@@ -118,7 +118,7 @@ void selectionSort(int array[], int size) {
 ```
 * Space Complexity = O(1)
 * Time Complexity = O(n^2)
-  * Best-Case = O(n)
+  * Best-Case = O(n^2)
   * Worst-Case = O(n^2)
 * Adaptive? *No*
 
