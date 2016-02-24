@@ -5,13 +5,19 @@ These notes were compiled using material found online as well as in the presenta
 
 ## Table of Contents
 
-* [Sorting](#sorting)
+* [Sorting Algorithms](#sorting-algorithms)
+  * [Insertion Sort](#insertion-sort)
+  * [Bubble Sort](#bubble-sort)
+  * [Selection Sort](#selection-sort)
+  * [Heap Sort](#heap-sort)
+  * [Merge Sort](#merge-sort)
+  * [Quick Sort](#quick-sort)
 * [LinearList](#linearlist)
 * [LinkedList](#linkedlist)
 
 ---
 
-## Sorting
+## Sorting Algorithms
 
 * Step Count = amount of computing that does not depend on instance characteristic of n
 * Worst-Case Count = maximum count
