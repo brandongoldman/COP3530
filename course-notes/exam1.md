@@ -14,6 +14,11 @@ These notes were compiled using material found online as well as in the presenta
   * [Quick Sort](#quick-sort)
 * [LinearList](#linearlist)
 * [LinkedList](#linkedlist)
+* [Stacks](#stacks)
+* [Queues](#queues)
+* [Hash Maps](#hash-maps)
+* [Compression](#compression)
+* [Trees](#trees)
 
 ---
 
@@ -268,3 +273,23 @@ void quickSort(int arr[], int left, int right) {
 ---
 
 ## LinkedList
+
+---
+
+## Stacks
+
+---
+
+## Queues
+
+---
+
+## Hash Maps
+
+---
+
+## Compression
+
+---
+
+## Trees
