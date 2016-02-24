@@ -6,6 +6,7 @@ These notes were compiled using material found online as well as in the presenta
 ## Table of Contents
 
 * [Sorting](#sorting)
+* [LinearList](#linearlist)
 * [LinkedList](#linkedlist)
 
 ---
@@ -56,19 +57,207 @@ void InsertionSort(int array[], int size)
 }
 ```
 * Space Complexity = O(1)
-* Time Complexity
+* Time Complexity = O(n^2)
   * Best-Case = O(n)
   * Worst-Case = O(n^2)
-* Asymptotic Complexity of Insertion Sort = O(n^2)
+* Adaptive? *Yes*
 
 ### Bubble Sort
+```
+void BubbleSort(int array[], int size) {
+    bool sorted = false;
+    for (int i = 0; (i < size - 1) && sorted == false; i++) {
+        sorted = true;
+        for (int j = 0; j < size - 1; j++) {
+            if (array[j+1] < array[j]) {
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+                
+                sorted = false;
+            }
+        }
+    }
+}
+```
+* Space Complexity = O(1)
+* Time Complexity = O(n^2)
+  * Best-Case = O(n)
+  * Worst-Case = O(n^2)
+* Adaptive? *Yes*
+
 ### Selection Sort
-### Count Sort
-### Shaker Sort
-### Shell Sort
+```
+void selectionSort(int array[], int size) {
+    int minPos;
+    int temp;
+    for (int i = 0; i < size - 1; i++) {
+        //	set minPosition to the current index of array
+        minPos = i;
+        
+        for (int j = i + 1; j < size; j++) {
+            if (array[j] < array[minPos]) {
+                //	minPosition will keep track of the index that min is in
+                minPos = j;
+            }
+        }
+        //	Swap the value of i with the new minPosition
+        if (minPos != i) {
+            temp = array[i];
+            array[i] = array[minPos];
+            array[minPos] = temp;
+        }
+    }
+}
+```
+* Space Complexity = O(1)
+* Time Complexity = O(n^2)
+  * Best-Case = O(n)
+  * Worst-Case = O(n^2)
+* Adaptive? *No*
+
 ### Heap Sort
+```
+void maxHeap(int a[], int i, int n) {
+    int l,r,largest,loc;
+    l=2*i;
+    r=(2*i+1);
+    if((l<=n)&&a[l]>a[i])
+        largest=l;
+    else
+        largest=i;
+    if((r<=n)&&(a[r]>a[largest]))
+        largest=r;
+    if(largest!=i)
+    {
+        loc=a[i];
+        a[i]=a[largest];
+        a[largest]=loc;
+        maxHeap(a, largest,n);
+    }
+}
+void buildMaxHeap(int a[], int n) {
+    for(int k = n/2; k >= 1; k--)
+    {
+        maxHeap(a, k, n);
+    }
+}
+void heapSort(int a[], int n) {
+    
+    buildMaxHeap(a,n);
+    int i, temp;
+    for (i = n; i >= 2; i--)
+    {
+        temp = a[i];
+        a[i] = a[1];
+        a[1] = temp;
+        maxHeap(a, 1, i - 1);
+    }
+}
+```
+* Space Complexity = O(1)
+* Time Complexity = O(n*log(n))
+  * Best-Case = O(n*log(n))
+  * Worst-Case = O(n*log(n))
+* Adaptive? *No*
+
 ### Merge Sort
+```
+/* leftIndex is for left index and rightIndex is right index of the sub-array of array to be sorted */
+void merge(int array[], int leftIndex, int middleIndex, int rightIndex) {
+    int i, int j, int k;
+    int n1 = middleIndex - leftIndex + 1;
+    int n2 =  rightIndex - middleIndex;
+    
+    /* create two temp arrays */
+    int leftTempArray[n1], int rightTempArray[n2];
+    /* Copy data to temp arrays leftTempArray[] and righTempArray[] */
+    for(i = 0; i < n1; i++) {
+        leftTempArray[i] = array[leftIndex + i];
+    }
+    for(j = 0; j < n2; j++) {
+        rightTempArray[j] = array[middleIndex + 1+ j];
+    }
+    /* Merge the temp arrays back into array[leftTempArray..rightTempArray]*/
+    i = 0, j = 0, k = leftIndex;
+    while (i < n1 && j < n2) {
+        if (leftTempArray[i] <= rightTempArray[j]) {
+            array[k] = leftTempArray[i];
+            i++;
+        }
+        else {
+            array[k] = rightTempArray[j];
+            j++;
+        }
+        
+        k++;
+    }
+    /* Copy the remaining elements of leftTempArray[], if there are any */
+    while (i < n1) {
+        array[k] = leftTempArray[i];
+        i++;
+        k++;
+    }
+    /* Copy the remaining elements of rightTempArray[], if there are any */
+    while (j < n2) {
+        array[k] = rightTempArray[j];
+        j++;
+        k++;
+    }
+}
+void mergeSort(int array[], int leftIndex, int rightIndex) {
+    if (leftIndex < rightIndex) {
+        //Same as (leftIndex + rightIndex)/2, but avoids overflow for large leftIndex and h
+        int middleIndex = leftIndex + (rightIndex - leftIndex) /2;
+        mergeSort(array, leftIndex, middleIndex);
+        mergeSort(array, middleIndex + 1, rightIndex);
+        merge(array, leftIndex, middleIndex, rightIndex);
+    }
+}
+```
+* Space Complexity = O(n) for Array, O(log(n)) for Linked List
+* Time Complexity = O(n*log(n))
+  * Best-Case = O(n*log(n))
+  * Worst-Case = O(n*log(n))
+* Adaptive? *No*
+
 ### Quick Sort
+```
+void quickSort(int arr[], int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int pivot = arr[(left + right) / 2];
+ 
+      /* partition */
+      while (i <= j) {
+            while (arr[i] < pivot)
+                  i++;
+            while (arr[j] > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = arr[i];
+                  arr[i] = arr[j];
+                  arr[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+      /* recursion */
+      if (left < j)
+            quickSort(arr, left, j);
+      if (i < right)
+            quickSort(arr, i, right);
+}
+```
+* Space Complexity = O(1)
+* Time Complexity = O(n*log(n))
+  * Best-Case = O(n*log(n))
+  * Worst-Case = O(n*log(n))
+* Adaptive? *No*
+
+---
+
+## LinearList
 
 ---
 
