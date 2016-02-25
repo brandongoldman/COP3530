@@ -1,0 +1,205 @@
+1. Which of the following is the proper declaration of a pointer?
+A. int x;
+B. int &x;
+C. ptr x;
+D. int *x;  -- correct
+
+
+2. Which of the following gives the memory address of integer variable a?
+A. *a;
+B. a;
+C. &a; -- correct
+D. address(a);   
+
+
+3. Which of the following gives the memory address of a variable 
+pointed to by pointer a?
+A. a;  -- correct
+B. *a;
+C. &a;
+
+
+4. Which of the following gives the value stored 
+at the address pointed to by the pointer a?
+A. a;
+B. val(a);
+C. *a;  -- correct
+D. &a;
+
+
+5. Which of the following is illegal?
+A. int *ip;
+B. string s, *sp = 0;
+C. int i; double* dp = &i; -- correct
+D. int *pi = 0;
+
+
+6. What will happen in this code?
+    int a = 100, b = 200;
+    int *p = &a, *q = &b;
+    p = q;
+A. b is assigned to a
+B. p now points to b  -- correct
+C. a is assigned to b
+D. q now points to a
+
+
+7. What is the best time complexity of bubble sort?
+(A) N^2
+(B) NlogN
+(C) N
+(D) N(logN)^2
+Answer: (C) 
+Explanation: The bubble sort is at its best if the input data is sorted. i.e. If the input data is sorted in the same order as expected output. 
+This can be achieved by using one boolean variable. The boolean variable is used to check whether the values are swapped at least once in the inner loop.
+
+
+8.The tightest lower bound on the number of comparisons, in the worst case, for comparison-based sorting is of the order of
+(A) N
+(B) N^2
+(C) NlogN
+(D) N(logN)^2
+Answer: (C) 
+Explanation: The number of comparisons that a comparison sort algorithm requires increases in proportion to Nlog(N), where N is the number of elements to sort. This bound is asymptotically tight:
+Given a list of distinct numbers (we can assume this because this is a worst-case analysis), there are N factorial permutations exactly one of which is the list in sorted order. 
+The sort algorithm must gain enough information from the comparisons to identify the correct permutations. 
+If the algorithm always completes after at most f(N) steps, it cannot distinguish more than 2^f(N) cases because the keys are distinct and each comparison has only two possible outcomes. 
+Therefore, 2^f(N) >= N! or equivalently f(N) >= log(N!).
+Since log(N!) is Omega(NlogN), the answer is NlogN.
+
+
+9. You have an unsorted array of integers, all in the range [0,100]. What is the best time complexity to sort the array? [You are allowed to use extra space, if needed].
+A. nlogn		B. n2		C. n		D. n(logn)2
+Answer C
+
+
+10. Let P be a singly linked list. Let Q be the pointer to an intermediate node x in the list. What is the worst-case time complexity of the best known algorithm to delete the node x from the list?
+A.O(n) B.O(log2n) C.O(logn) D.O(1)---correct
+
+
+11. Consider the following function to traverse a linked list.
+void traverse(struct Node *head)
+{
+   while (head->next != NULL)
+   {
+       cout<<head->data<<" ";
+       head = head->next;
+   }
+}
+Which of the following is FALSE about above function?
+(A) The function may crash when the linked list is empty
+(B) The function doesn’t print the last node when the linked list is not empty
+(C) The function is implemented incorrectly because it changes head
+Answer: (C) 
+
+
+12. You are given pointers to first and last nodes of a singly linked list, which of the following operations are dependent on the length of the linked list?
+(A) Delete the first element
+(B) Insert a new element as a first element
+(C) Delete the last element of the list
+(D) Add a new element at the end of the list
+Answer: (C) 
+Explanation: a) Can be done in O(1) time by deleting memory and changing the first pointer.
+b) Can be done in O(1) time, see push() here
+c) Delete the last element requires pointer to previous of last, which can only be obtained by traversing the list.
+d) Can be done in O(1) by changing next of last and then last.
+
+
+13. Suppose each set is represented as a linked list with elements in arbitrary order. Which of the following set operations is the fastest?
+(A) union
+(B) intersection
+(C) membership, 
+(D) cardinality
+Answer: (C) 
+
+
+14. Consider the following function that takes reference to head of a Doubly Linked List as parameter. 
+Assume that a node of doubly linked list has previous pointer as prev and next pointer as next.
+void fun(struct node **head_ref)
+{
+    struct node *temp = NULL;
+    struct node *current = *head_ref;
+ 
+    while (current !=  NULL)
+    {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+ 
+    if(temp != NULL )
+        *head_ref = temp->prev;
+}
+Assume that reference of head of following doubly linked list is passed to above function
+1 <--> 2 <--> 3 <--> 4 <--> 5 <-->6.
+What should be the modified linked list after the function call?
+(A) 2 <--> 1 <--> 4 <--> 3 <--> 6 <-->5
+(B) 5 <--> 4 <--> 3 <--> 2 <--> 1 <-->6.
+(C) 6 <--> 5 <--> 4 <--> 3 <--> 2 <--> 1.
+(D) 6 <--> 5 <--> 4 <--> 3 <--> 1 <--> 2
+Answer: (C) 
+
+
+15. Which one of the following is an application of Stack Data Structure?
+(A) Managing function calls
+(B) The stock span problem
+(C) Arithmetic expression evaluation
+(D) All of the above
+Answer: (D) 
+
+
+16. The following postfix expression with single digit operands is evaluated using a stack: 8 2 3 ^ / 2 3 * + 5 1 * - 
+Note that ^ is the exponentiation operator. The top two elements of the stack after the first * is evaluated are:
+(A) 6, 1
+(B) 5, 7
+(C) 3, 2
+(D) 1, 5
+Answer: (A) 
+
+
+17. A single array A[1..MAXSIZE] is used to implement two stacks. The two stacks grow from opposite ends of the array. 
+Variables top1 and top2 (topl< top 2) point to the location of the topmost element in each of the stacks. 
+If the space is to be used efficiently, the condition for “stack full” is
+(A) (top1 = MAXSIZE/2) and (top2 = MAXSIZE/2+1)
+(B) top1 + top2 = MAXSIZE
+(C) (top1= MAXSIZE/2) or (top2 = MAXSIZE)
+(D) top1= top2 -1
+Answer: (D) 
+Explanation: If we are to use space efficiently then size of the any stack can be more than MAXSIZE/2.
+Both stacks will grow from both ends and if any of the stack top reaches near to the other top then stacks are full. 
+So the condition will be top1 = top2 -1 (given that top1 < top2)
+
+
+18. Following is pseudo code of a function that takes a number as an argument, and uses a stack s to do processing.
+void fun(int n){
+    stack s;
+    while (n > 0){
+		s.push(n%2);
+		n = n/2;
+    }
+    while (!isEmpty(s))
+		cout<<pop(s)<<" "; 
+}
+What does the above function do in general?
+(A) Prints binary representation of n in reverse order
+(B) Prints binary representation of n
+(C) Prints the value of Logn
+(D) Prints the value of Logn in reverse order
+Answer: (B) 
+
+
+19. Which one of the following is an application of Queue Data Structure?
+(A) When a resource is shared among multiple consumers.
+(B) When data is transferred asynchronously (data not necessarily received at same rate as sent) between two processes
+(C) Load Balancing
+(D) All of the above
+Answer: (D) 
+
+
+20. How many queues are needed to implement a stack. Consider the situation where no other data structure like arrays, linked list is available to you.
+(A) 1
+(B) 2
+(C) 3
+(D) 4
+Answer: (B)
