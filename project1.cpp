@@ -288,7 +288,7 @@ int insertHashValue(string in, unordered_map<string,string> &mapOfVariables)
     return flag;
 }
 
-int main(int argc, char** argv)
+int main()
 {
 	// make cin faster
 	std::ios::sync_with_stdio(false);
@@ -310,6 +310,57 @@ int main(int argc, char** argv)
         // search for keywords 'let' and 'quit'
         size_t quit = input.find("quit");
         size_t let = input.find("let");
+
+        // follow until end of string
+        if (quit != string::npos) // if quit was NOT found...
+        {
+            break;	// prevent console from outputting data values unnecessarily 
+        }
+
+        if (let != string::npos) // if let was NOT found...
+        {
+
+            input = removeSpaces(input);
+            input.erase(let, let + (varDeclaration.size()));	// remove word 'let' from string
+            insertHashValue(input, mapOfVariables); 			// insert remaining portion of string to hashmap
+        }
+
+        else
+        {
+            if(mapOfVariables.size() > 0)
+            {
+                s = convertToPostfix(input, mapOfVariables, flag);
+                
+                if(flag != 1 && flag != 2)
+                { 
+                    string output = extractOperands(s, flag);
+                        
+                    if(flag != 1 && flag != 2)
+                    {
+                        cout << output << endl;
+                    }
+                    // if not, the program will cout message from findExpressionInMap or Evaluate method
+                }            
+            }
+
+            else
+            {
+                
+                string output = convertToPostfix(input, mapOfVariables, flag);
+                
+                if(flag != 1 && flag != 2)
+                {
+                    output = extractOperands(output, flag);
+                    
+                    if(flag != 1 && flag != 2)
+                    {
+                        cout << output << endl;
+                    }
+                    // if not, the program will cout message from findExpressionInMap or Evaluate method
+
+                }
+            }
+        }
     }
     return 0;
 }
