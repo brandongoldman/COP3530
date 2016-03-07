@@ -51,7 +51,7 @@ string Evaluate(char op, double op1, double op2, int &flag)
 
     if(op == '+')
     {
-    	answer = op1 + op2;
+    	answer = op1 + op2; 
     }
 
     else if(op == '-')
