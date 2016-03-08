@@ -22,7 +22,7 @@ C. &a;
 4. Which of the following gives the value stored 
 at the address pointed to by the pointer a?
 A. a;
-B. val(a);
+B. val(a); // yields random chars
 C. *a;  -- correct
 D. &a;
 
@@ -42,39 +42,47 @@ A. b is assigned to a
 B. p now points to b  -- correct
 C. a is assigned to b
 D. q now points to a
+Exmplanation: p-->a   q-->b, but then p------->b<-------q
 
 
 7. What is the best time complexity of bubble sort?
-(A) N^2
-(B) NlogN
-(C) N
-(D) N(logN)^2
+(A) O(N^2)
+(B) O(NlogN)
+(C) O(N) 	---- correct
+(D) O(N(logN)^2)
 Answer: (C) 
 Explanation: The bubble sort is at its best if the input data is sorted. i.e. If the input data is sorted in the same order as expected output. 
 This can be achieved by using one boolean variable. The boolean variable is used to check whether the values are swapped at least once in the inner loop.
 
 
 8.The tightest lower bound on the number of comparisons, in the worst case, for comparison-based sorting is of the order of
-(A) N
-(B) N^2
-(C) NlogN
-(D) N(logN)^2
+(A) O(N)
+(B) O(N^2)
+(C) O(NlogN)	---- correct
+(D) O(N(logN)^2)
 Answer: (C) 
 Explanation: The number of comparisons that a comparison sort algorithm requires increases in proportion to Nlog(N), where N is the number of elements to sort. This bound is asymptotically tight:
 Given a list of distinct numbers (we can assume this because this is a worst-case analysis), there are N factorial permutations exactly one of which is the list in sorted order. 
 The sort algorithm must gain enough information from the comparisons to identify the correct permutations. 
 If the algorithm always completes after at most f(N) steps, it cannot distinguish more than 2^f(N) cases because the keys are distinct and each comparison has only two possible outcomes. 
 Therefore, 2^f(N) >= N! or equivalently f(N) >= log(N!).
-Since log(N!) is Omega(NlogN), the answer is NlogN.
+Since log(N!) is O(NlogN), the answer is O(NlogN).
 
 
 9. You have an unsorted array of integers, all in the range [0,100]. What is the best time complexity to sort the array? [You are allowed to use extra space, if needed].
-A. nlogn		B. n2		C. n		D. n(logn)2
-Answer C
+A. nlogn		
+B. n2		
+C. n		---- correct		
+D. n(logn)2
+Explanation: This is example of Count Sort, which can be done in O(n) time
 
 
 10. Let P be a singly linked list. Let Q be the pointer to an intermediate node x in the list. What is the worst-case time complexity of the best known algorithm to delete the node x from the list?
-A.O(n) B.O(log2n) C.O(logn) D.O(1)---correct
+A.O(n) 
+B.O(log2n) 
+C.O(logn) 
+D.O(1)	---correct
+Explanation: If the node was the last node, this would not be O(1)
 
 
 11. Consider the following function to traverse a linked list.
@@ -87,8 +95,8 @@ void traverse(struct Node *head)
    }
 }
 Which of the following is FALSE about above function?
-(A) The function may crash when the linked list is empty
-(B) The function doesn’t print the last node when the linked list is not empty
+(A) The function may crash when the linked list is empty 			// statement is correct (NULL ptr access)
+(B) The function doesn’t print the last node when the linked list is not empty	// you won't get to while loop at all, so won't print
 (C) The function is implemented incorrectly because it changes head
 Answer: (C) 
 
@@ -99,17 +107,18 @@ Answer: (C)
 (C) Delete the last element of the list
 (D) Add a new element at the end of the list
 Answer: (C) 
-Explanation: a) Can be done in O(1) time by deleting memory and changing the first pointer.
-b) Can be done in O(1) time, see push() here
-c) Delete the last element requires pointer to previous of last, which can only be obtained by traversing the list.
-d) Can be done in O(1) by changing next of last and then last.
+Explanation: 
+	a) Can be done in O(1) time by deleting memory and changing the first pointer.
+	b) Can be done in O(1) time, see push() here
+	c) Delete the last element requires pointer to previous of last, which can only be obtained by traversing the list.
+	d) Can be done in O(1) by changing next of last and then last.
 
 
 13. Suppose each set is represented as a linked list with elements in arbitrary order. Which of the following set operations is the fastest?
-(A) union
-(B) intersection
-(C) membership, 
-(D) cardinality
+(A) union		// merges two linkedlists (tail of first to head of second) --> O(2n)
+(B) intersection	// O(2n)
+(C) membership		// O(n) but faster
+(D) cardinality		// O(n)
 Answer: (C) 
 
 
@@ -136,13 +145,14 @@ Assume that reference of head of following doubly linked list is passed to above
 What should be the modified linked list after the function call?
 (A) 2 <--> 1 <--> 4 <--> 3 <--> 6 <-->5
 (B) 5 <--> 4 <--> 3 <--> 2 <--> 1 <-->6.
-(C) 6 <--> 5 <--> 4 <--> 3 <--> 2 <--> 1.
+(C) 6 <--> 5 <--> 4 <--> 3 <--> 2 <--> 1. 	---- correct
 (D) 6 <--> 5 <--> 4 <--> 3 <--> 1 <--> 2
 Answer: (C) 
+Explanation: Code will reverse list by making next ptr point to previous element, and prev ptr point to next element
 
 
 15. Which one of the following is an application of Stack Data Structure?
-(A) Managing function calls
+(A) Managing function calls		// f1 --- f2 ---> f2 --- f3 ---> f3
 (B) The stock span problem
 (C) Arithmetic expression evaluation
 (D) All of the above
@@ -156,6 +166,7 @@ Note that ^ is the exponentiation operator. The top two elements of the stack af
 (C) 3, 2
 (D) 1, 5
 Answer: (A) 
+Explanation: push 8,2,3 --> pop 3,2 --> evaluate with ^ (8) and push 8 --> pop 8 and 8 --> evaluate with / (1) --> push 1 --> push 2,3 --> pop 2,3 and multiply (6) --> push 6 --> pop 6,1 (ANS)
 
 
 17. A single array A[1..MAXSIZE] is used to implement two stacks. The two stacks grow from opposite ends of the array. 
@@ -183,7 +194,7 @@ void fun(int n){
 }
 What does the above function do in general?
 (A) Prints binary representation of n in reverse order
-(B) Prints binary representation of n
+(B) Prints binary representation of n	---- correct
 (C) Prints the value of Logn
 (D) Prints the value of Logn in reverse order
 Answer: (B) 
@@ -199,7 +210,7 @@ Answer: (D)
 
 20. How many queues are needed to implement a stack. Consider the situation where no other data structure like arrays, linked list is available to you.
 (A) 1
-(B) 2
+(B) 2 ---- correct
 (C) 3
 (D) 4
 Answer: (B)
