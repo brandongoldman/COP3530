@@ -10,6 +10,7 @@
 #include <stack>			// convert infix -> postfix
 #include <sstream>			// for getline
 #include <math.h>			// for exponential algebra
+#include <cctype>			// isdigit and isalpha
 #include <stdexcept>
 
 using namespace std;
@@ -23,6 +24,7 @@ using namespace std;
 
 
 // remove blank spaces from infix equation so that we can parse
+// Function will run in O(n)
 string removeSpaces(string infixEquation)
 {
     int size = infixEquation.size();
@@ -38,32 +40,37 @@ string removeSpaces(string infixEquation)
     }
 
     // else 
-    	// skip over char
+    	// if char is space, we don't want to push it to new string 's'
     return s;
 }
 
-// method to calculate answer
-// takes in operator, and two numbers from the stack
+// method contains mathematical functions for operands
+// takes in operator, and two numbers from the stack that are popped in extractOperands function
+// Function will run in O(1)
 string Evaluate(char op, double op1, double op2, int &flag)
 {
     double answer;
-    stringstream stream;
+    stringstream stream;	// stringstream is a convenient way to manipulate strings
 
+    // addition
     if(op == '+')
     {
-    	answer = op1 + op2; 
+    	answer = op1 + op2;
     }
 
+    // subtraction
     else if(op == '-')
     {
     	answer = op1 - op2;
     }
 
+    // multiplication
     else if(op == '*')
     {
     	answer = op1 * op2;
     }
 
+    // division (*must account for d-b-z*)
     else if(op == '/')
     {
     	// throw flag if you try to divide by zero
@@ -77,28 +84,31 @@ string Evaluate(char op, double op1, double op2, int &flag)
     		answer = op1 / op2;
     }
 
+    // exponents
     else if(op == '^')
     {
     	// use math function from math library
     	answer = pow(op1,op2);
     }
 
-    stream << answer;
+    stream << answer;	// allows us to write answer to string by converting numerical types
     return stream.str();
 }
 
 // this function will allow program to search hashtable to check if variable exists (or is undeclared)
-string insertHashKey(unordered_map<string, string> &mapOfVariables, string expression, int &flag)
+// Function will run in O(var) where var is the number of variables in the map
+string findExpressionInMap(unordered_map<string, string> &mapOfVariables, string expression, int &flag)
 {
 	// hashmap key is string (used for parsing) and the value is kept as string
 	// essentially, let x = 5 --> (x,5) at [0]
 	// map is name of variable
     unordered_map<string, string>::const_iterator map = mapOfVariables.find(expression);
     
-    // if the variable exists, declare / update it
+    // if the variable exists
     if (map != mapOfVariables.end())
     {
-        expression = map->second;
+    	// find the value of expression
+        expression = map->second; // Map stores a key and a value --> second refers to the value
     }
 
     // otherwise the variable isn't declared
@@ -111,11 +121,12 @@ string insertHashKey(unordered_map<string, string> &mapOfVariables, string expre
     return expression;
 }
 
-// use shunting yard algorithm to conver to postfix equation
-string convertToPostfix(string expression, unordered_map<string, string> &mapOfmapOfVariablesiables, int &flag)
+// convert infix expression to postfix expression once spaces are removed
+// Function will run in O(n)
+string convertToPostfix(string expression, unordered_map<string, string> &mapofVariables, int &flag)
 {
 	// create map to declare mapOfVariablesiable precedence similar to:
-		// operator precedence
+	/*	// operator precedence
 		int opPriority(const string &op) 
 		{
 		  switch (op) 
@@ -128,26 +139,61 @@ string convertToPostfix(string expression, unordered_map<string, string> &mapOfm
 		    default : return 0;
 		  }
 		}
+	*/
+	// map will contain operators for efficient lookup
+    unordered_map<char, int> priority = {{'+',1},{'-',1},{'*',2},{'/',2},{'^',3}};	// we exclude decimal points
+
+    int size = expression.size();
 
     // create stack to hold operands
     stack<char> elements;
 
+    // built in string feature set allows great flexibility with number analysis using cctype
     string postfix; // infix equation after conversion
     string s;
     string tempmapOfVariables;
 
     for(int i = 0; i < size; i++)
     {
+        char charIterator = expression.at(i);
 
+        // if char is a number and if number contains decimal, push surrounding char  
+        if(!isdigit(charIterator) && s.size() > 0 && charIterator != '.')
+        {
+            postfix.append(s);
+            postfix.push_back(' ');
+            s.clear();
+        }
+
+        // if char is character push char
+        if(!isalpha(charIterator) && tempmapOfVariables.size() > 0)
+        {
+            postfix.append(findExpressionInMap(mapofVariables, tempmapOfVariables, flag));
+            
+            // if undefined variable or divide by zero, create empty string because we dont need to evaluate further
+            if(flag == 1 || flag == 2)
+            {
+                return "";
+            }
+            
+            // otherwise push char
+            postfix.push_back(' ');
+            tempmapOfVariables.clear();
+        }
+
+        // we want to check if the iterator meets a char or a decimal point
+        // both need to be pushed to new string 
         if(isdigit(charIterator) || charIterator == '.')
         {
+        	// push value
             s.push_back(charIterator);
         }
 
 
-        // corner case if just character, push char
+        // if just character, push char
         else if(isalpha(charIterator))
         {
+        	// push to expression
             tempmapOfVariables.push_back(charIterator);
         }
 
@@ -159,12 +205,14 @@ string convertToPostfix(string expression, unordered_map<string, string> &mapOfm
 
         else if(charIterator == ')')
         {
+        	// if the parenthesis is still open, we want to push elements inside to elements stack
             while(!elements.empty() && elements.top() != '(')
             {
                 postfix.push_back(elements.top());
                 elements.pop();
             }
 
+            // when parenthesis closes we want value
             elements.pop();
         }
 
@@ -192,11 +240,35 @@ string convertToPostfix(string expression, unordered_map<string, string> &mapOfm
         }
     }
 
+    if(s.size() > 0)
+    {
+        postfix.append(s);
+        postfix.push_back(' ');
+        s.clear();
+    }
+
+    if(tempmapOfVariables.size() > 0)
+    {
+        postfix.append(findExpressionInMap(mapofVariables, tempmapOfVariables, flag));
+        postfix.push_back(' ');
+        tempmapOfVariables.clear();
+    }
+
+    while(!elements.empty())
+    {
+        char topElement = elements.top();
+        elements.pop();
+
+        postfix.push_back(topElement);
+    }
+
+    // we want string that has been converted
     return postfix;
 }
 
 
 // iterate through expression, pop two operands and will evaluate expression
+// Function will run in O(n)
 string extractOperands(string expression, int &flag)
 {
     stack<string> elements;
@@ -208,6 +280,10 @@ string extractOperands(string expression, int &flag)
     	// when expression iterates to operator, pop two operands from stack for evaluation
         if(expression.at(i) == '+' || expression.at(i) == '-' || expression.at(i) == '*' || expression.at(i) == '/' || expression.at(i) == '^' )
         {
+            if(elements.size() > 1)
+            {
+            	// first element popped will be second operand due to nature of stack
+            	// alternatively a queue could have been used with no time complexity penalty
                 double element2 = stod(elements.top().c_str());
                 elements.pop();
 
@@ -222,6 +298,7 @@ string extractOperands(string expression, int &flag)
                 {
                     return "";
                 }
+            }
         }
 
         // if expression does not iterate to operator, check if decimal exists
@@ -245,7 +322,7 @@ string extractOperands(string expression, int &flag)
 
 
 // take input and push to hashmap
-// done in O(1) time (worst case look up is O(n))
+// done in O(1) time (worst case look up is O(n)) where n is variable size
 int insertHashValue(string in, unordered_map<string,string> &mapOfVariables)
 {
     string element;
@@ -258,7 +335,7 @@ int insertHashValue(string in, unordered_map<string,string> &mapOfVariables)
     while(in.at(it) != '=')
     {
         element.push_back(in.at(it));   // we want to push the value to the hashtable
-        in.erase(in.begin());			// erase by iteration
+        in.erase(in.begin());			// erase
     }
 
     unordered_map<string,string>::const_iterator value = mapOfVariables.find(element);
@@ -288,6 +365,13 @@ int insertHashValue(string in, unordered_map<string,string> &mapOfVariables)
     return flag;
 }
 
+// main method
+/* Method will do the following:
+		- Take input expression from console (continuously ask for input)
+		- Send expression to remove spaces
+		- Search for keywords (let and quit) to declare variables or exit program
+		- Send variables to hashmap built into C++
+*/
 int main()
 {
 	// make cin faster
