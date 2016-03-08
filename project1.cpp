@@ -6,7 +6,7 @@
 
 #include <iostream>			// cin from console
 #include <string> 			// store characters as string
-#include <unordered_map>	// store variable declarations
+#include <unordered_map>		// store variable declarations
 #include <stack>			// convert infix -> postfix
 #include <sstream>			// for getline
 #include <math.h>			// for exponential algebra
