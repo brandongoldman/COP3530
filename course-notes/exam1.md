@@ -277,6 +277,7 @@ void quickSort(int arr[], int left, int right) {
   * insert(theIndex, theElement) = add an element so that the new element has specified index
   * output() = output list of elements from left to right
 * How to Extend a C++ Class:
+  
   ```
   template<class T>
     class arrayList : public linearList<T> 
