@@ -276,6 +276,7 @@ void quickSort(int arr[], int left, int right) {
   * erase(theIndex) = remove/delete element with given index (returns 'error' if index not present)
   * insert(theIndex, theElement) = add an element so that the new element has specified index
   * output() = output list of elements from left to right
+
 * How to Extend a C++ Class:
   
   ```
@@ -285,6 +286,7 @@ void quickSort(int arr[], int left, int right) {
 	   // code for all abstract methods of linearList must come here
 	}
   ```
+
 * Arrays as Linear Lists
   * Increase size of array? Create new (larger) array [at least 1 index larger than old] --> copy elements --> delete old (smaller) array
     * Cost of Increasing Size: Theta(size of old array)
@@ -298,11 +300,19 @@ void quickSort(int arr[], int left, int right) {
     * Increases cost of 'n' inserts by Theta(n)
     * Increases cost of 'n' add operations by Theta(n^2)
     * Resizing by additive constant 'c' requires space that is at most: 2 * [maxListSize - 1] + c 
-
-
 ---
 
 ## LinkedList
+* Iterators permit you to examine the elements of a data structure one at a time (ex: input, output, forward, bidirectional, reverse iterators)
+  * Bidirectional Iterators = allow both forward and backward movement through the elements of a data structure 
+  * Syntax: ``` iterator(T *thePosition) ``` 
+    * Constructs iterator positioned at specified element
+    * Dereferenced using * and ->
+    * Incrementation using ++ and --
+    * Equality Testing using == and !=
+  * begin() = returns iterator positioned at element 0 of list
+  * end() = returns iterator positioned one past last element
+
 
 ---
 
