@@ -269,6 +269,21 @@ void quickSort(int arr[], int left, int right) {
 ---
 
 ## LinearList
+* Operators:
+  * size() = determines list size
+  * get(theIndex) = get element with given index
+  * indexOf(theElement) = determine the index of an element (returns -1 if element not present)
+  * erase(theIndex) = remove/delete element with given index (returns 'error' if index not present)
+  * insert(theIndex, theElement) = add an element so that the new element has specified index
+  * output() = output list of elements from left to right
+* How to Extend a C++ Class:
+```
+template<class T>
+class arrayList : public linearList<T> 
+{
+   // code for all abstract methods of linearList must come here
+}
+```
 
 ---
 
