@@ -277,13 +277,27 @@ void quickSort(int arr[], int left, int right) {
   * insert(theIndex, theElement) = add an element so that the new element has specified index
   * output() = output list of elements from left to right
 * How to Extend a C++ Class:
-```
-template<class T>
-class arrayList : public linearList<T> 
-{
-   // code for all abstract methods of linearList must come here
-}
-```
+  ```
+  template<class T>
+    class arrayList : public linearList<T> 
+	{
+	   // code for all abstract methods of linearList must come here
+	}
+  ```
+* Arrays as Linear Lists
+  * Increase size of array? Create new (larger) array [at least 1 index larger than old] --> copy elements --> delete old (smaller) array
+    * Cost of Increasing Size: Theta(size of old array)
+    * Cost of Inserting Into Empty Array: Theta(n^2)
+    * Space Complexity of New Array: [Space Needed] = 2 * [newLength] - 1 = 2 * [maxListSize] - 1
+  * Array Doubling
+    * Time needed for 'n' inserts increases by Theta(n)
+    * Space Complexity of New Array: [Space Needed] = 1.5 * [newLength] <= 3 * [maxListSize] - 3
+  * How big should the new array be?
+    * Resize by Constant Factor: [newLength] = c * [oldLength]
+    * Increases cost of 'n' inserts by Theta(n)
+    * Increases cost of 'n' add operations by Theta(n^2)
+    * Resizing by additive constant 'c' requires space that is at most: 2 * [maxListSize - 1] + c 
+
 
 ---
 
