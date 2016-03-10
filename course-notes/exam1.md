@@ -361,18 +361,21 @@ void quickSort(int arr[], int left, int right) {
 * 1-D Arrays --> ``` a[0] a[1] a[2] ... a[n] ```
   * Maps into contiguous memory locations
   * Space Overhead = 4 bytes
-
 * 2-D Arrays --> ``` a[0][0] a[0][1] ... a[0][n]; a[1][0] a[1][1] ... a[1][n]; ```
   * Space Overhead = 4 * [# of rows + 1] bytes
-
 * Row-Major Mapping
   * How to Convert 2D --> 1D: ``` x[i][j] in 2-D Array == ic + j in 1-D Array ```
   * Disadvantage = need contiguous memory of size r*c (row * col)
-
 * Column-Major Mapping
   * How to Convert 2D --> 1D:
     * Column elements are collected from top to bottom (columns are collected left to right)
     * Given Matrix: [a,b,c,d; e,f,g,h; i,j,k,l] we convert to get --> y = {a,e,i,b,f,c,g,k,d,h,l}
+
+#### Sparse Matrices
+* Sparse Matrices = many elements are zero (single linear list in row-major order)
+  * Each nonzero element is represented by ``` list = [row; column; value] ```
+  * Node Structure: ``` [row, col; value, next] ```
+  
 
 ---
 
