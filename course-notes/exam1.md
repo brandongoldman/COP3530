@@ -597,3 +597,31 @@ void quickSort(int arr[], int left, int right) {
   1. Rightmost path is a shortest root to external node path and the length of this path is s(root)
   2. Number of internal nodes is at least ```2^(s(root)) - 1``` and ```s(root) <= log(n + 1)```
   3. Length of rightmost path is O(log n) with 'n' denoting number of nodes in leftist tree
+
+#### Tournament Trees
+* Winner Trees
+  * Complete binary tree with 'n' external nodes (players) and 'n-1' internal nodes (matches between players) where the root denotes the 'winner'
+  * Height = ```log_2(n)```
+  * Time Complexity:
+    * O(1) to play match
+    * O(n) to initialize n player winner tree
+    * O(log n) to remove winner and replay
+    * O(n log n) to remove winner and play n times
+    * O(n log n) total sort time
+
+* Loser Trees
+  * Each match node stores the match loser rather than winner
+  * Time Complexity:
+    * O(n) to initialize
+    * O(log n) to replay
+
+#### Bin Packing
+* First Fit
+  * Items are packed one at a time in given order and is packed in leftmost available bin first
+  * If no bin is available to fit item, then start a new bin
+  * Time Complexity = O(n log n)
+* First Fit Decreasing
+  * Items are sorted into decreasing order and then the first fit algorithm is applied
+* Best Fit
+  * Place item in first available spot large enough to hold item
+  * If items are sorted in decreasing order, then you are performing Best Fit Decreasing
