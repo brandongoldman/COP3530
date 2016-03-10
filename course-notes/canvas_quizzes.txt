@@ -10,3 +10,31 @@ Explanation:
 3. For an input size of n=10^7, Which time complexity is impractical?
 Answer: O(2^n)
 Explanation:
+
+
+Quiz 2:
+1. For a 10by1000 (i.e. int[10][1000]) 2D array,What is the difference in space overhead between a row major representation and an array-of-arrays representation?*, * Assuming 32-bit pointers
+Answer: 36 bytes
+Explanation:
+
+2. What is the asymptotic time complexity of the given functions for a stack, implemented on an array with the right end as the top of the stack?
+Answer: top  O(1), push O(1), pop O(1)
+Explanation:
+
+3. What does the following code do on a linked list? ('head' points to the head of the linked list)
+      node* prev = NULL;
+      node* current = head;
+      node* next;
+      while (current != NULL)
+      {
+      next = current->next; 
+      current->next = prev; 
+      prev = current;
+      current = next;
+      }
+      head = prev;
+Answer: Reverse a Linked List
+Explanation:
+  
+  
+Quiz 3:
