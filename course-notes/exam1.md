@@ -49,7 +49,7 @@ These notes were compiled using material found online as well as in the presenta
   double timeForCode = elapsedMillis / numberOfRepetitions;
   ```
 
-*Shoutout to the coding prodigy [@nickbryanmiller](https://github.com/nickbryanmiller/DataStructuresAndAlgorithms/blob/master/Sorting%20Algorithms/SortingAlgorithms.cpp) for compiling some of the code used below!*
+*Shoutout to [@nickbryanmiller](https://github.com/nickbryanmiller/DataStructuresAndAlgorithms/blob/master/Sorting%20Algorithms/SortingAlgorithms.cpp) for compiling some of the code used below!*
 	
 ### Insertion Sort
 ```
