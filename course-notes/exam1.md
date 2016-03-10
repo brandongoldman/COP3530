@@ -313,6 +313,7 @@ void quickSort(int arr[], int left, int right) {
   * begin() = returns iterator positioned at element 0 of list
   * end() = returns iterator positioned one past last element
 
+### Pointers
 * Chain = linked list in which each node represents one element
   * Elements are chained together using links (pointers)
   * Last node has a NULL pointer
@@ -327,13 +328,30 @@ void quickSort(int arr[], int left, int right) {
     // step 3: link beforeNode to newNode
     beforeNode->next = newNode;
     ```
-    
+
+* Memory Management (using Linked Systems / C++ Simulated Pointers)
+  * Garbage Collection
+
+    ```
+    Step 1: Mark nodes that are in use (set mark bits to true)
+    Step 2: Compact free space (optional; move all marked nodes to one end of memory and update all pointers)
+    Step 3: Move free nodes to storage pool (scan memory for unmarked nodes, else put free block into pool)
+    Alternative: ``` delete nameOfMethod; ``` (time to free nodes is proportional to number of nodes being freed rather than total memory size)
+    ```
+
+    * Advantages: 
+      * Don't need to worry about freeing nodes as they become free
+      * Applications run faster with more memory accessible
+    * Disadvantages: 
+      * Garbage collection time is linear in memory size (not in amount of free memory)
+ 
+* Simulated Pointers = allocate chain of nodes without having to relink / can free chain of nodes in O(1) time when first/last nodes are known
+
+
 ### Doubly Linked Lists
 * Additions to front and end become O(1)
 * Can be used to reduce worst-case run time of linear list add/remove/get (by nearly 50%)
   * When searching for index, if index > listSize/2, then start at right hand side (end) of list and search leftwards
-
-
 
 ---
 
