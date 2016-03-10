@@ -468,7 +468,23 @@ void quickSort(int arr[], int left, int right) {
 ---
 
 ## Compression
-
+* Goal: reduce size of data (reduce storage space --> reduce storage cost) and reduce time needed to retrieve/transmit data
+* Compression Ration = ``` (Original Data Size) / (Compressed Data Size) ```
+* Lossless vs. Lossy
+  * Lossless = data is not changed (originalData == decompressedData)
+    * Used in text file compression (where data changes are not acceptable)
+    * Examples: zip and compress (based on LZW)
+  * Lossy = data is changed (originalData != decompressedData)
+    * Obtains higher compression ratios
+    * Used in image/video applications (where data changed are unnoticable)
+* LZW Compression
+  * Character sequences in original text are replaced by codes that are dynamically determined
+  * Code table is not encoded into the compressed text (it may not be reconstructed from compressed text during decompression)
+* Time Complexity: ('n' is the length of the text file)
+  * Compression = O(n)
+  * Decompression = O(n)
+  * Complexity is determined based on the fact that the complexity of computing the home bucket in a hash table is O(1)
+  
 ---
 
 ## Trees
