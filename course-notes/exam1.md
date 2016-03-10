@@ -511,6 +511,17 @@ void quickSort(int arr[], int left, int right) {
 * Maximum Number of Nodes = ``` 2^h - 1 ```
 * Right-Skewed Binary Tree
   * Transforms into array whose length is between ```n+1``` and ```2^n```
+* Operations:
+  * find(i) = return the element that is in the root (ex: ```find(leaf)``` returns ```grandchild```)
+    * Time Complexity = O(log n) or (at worst) O(n)
+  * union(i,j) = unite two trees by making one a subtree of the other (i and j are roots of separate trees)
+    * Time Complexity = O(1)
+* Height Rule:
+  * Make tree with smaller height a subtree of the other
+  * Height increases only when two trees of equal height are united
+* Weight Rule:
+  * Make tree with fewer elements a subtree of the other
+  * Weight of new tree is sum of weights of the two trees that were united
 
 #### Traversal Methods
 * Preorder (VLR)
@@ -551,7 +562,7 @@ void quickSort(int arr[], int left, int right) {
   	Output: abc
   ```
 
-  * Traversal Applications
-    * Make a Clone (use Postorder Traversal to clone left, right, and visit)
-    * Determine Height (```Height = 1 + Max(heightLeft, heightRight)```)
-    * Determine Number of Nodes (use any method desired and increment a counter)
+* Traversal Applications
+  * Make a Clone (use Postorder Traversal to clone left, right, and visit)
+  * Determine Height (```Height = 1 + Max(heightLeft, heightRight)```)
+  * Determine Number of Nodes (use any method desired and increment a counter)
