@@ -1,0 +1,12 @@
+Quiz 1:
+1. What is the worst case time complexity of insertion sort?
+Answer: O(n^2)
+Explanation:
+
+2. What is the auxiliary (additional) space complexity of insertion sort?
+Answer: O(1)
+Explanation:
+
+3. For an input size of n=10^7, Which time complexity is impractical?
+Answer: O(2^n)
+Explanation:
