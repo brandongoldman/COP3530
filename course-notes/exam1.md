@@ -586,4 +586,14 @@ void quickSort(int arr[], int left, int right) {
   * Time Complexity to Schedule Jobs = O(m*n) ('m' = number of machines)
 * Huffman Codes = type of optimal frefix code (useful in lossless compression / LZW method)
 * Heap Height = ```log_2(n + 1)```
-* Time Complexity of Insert & Remove = O(log n)
+* Time Complexity of of Heap Sort
+  * Insert & Remove = O(log n)
+  * Initialize = O(h - j + 1) = O(n) (where h = height, j = level)
+
+#### Leftist Trees
+* Linked binary tree that can do everything a heap can do (and do so in the same time complexity)
+* Melding two leftist tree priority queues can be done in O(log n) time
+* Properties of Leftist Tree:
+  1. Rightmost path is a shortest root to external node path and the length of this path is s(root)
+  2. Number of internal nodes is at least ```2^(s(root)) - 1``` and ```s(root) <= log(n + 1)```
+  3. Length of rightmost path is O(log n) with 'n' denoting number of nodes in leftist tree
