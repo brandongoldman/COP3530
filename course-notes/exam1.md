@@ -300,6 +300,7 @@ void quickSort(int arr[], int left, int right) {
     * Increases cost of 'n' inserts by Theta(n)
     * Increases cost of 'n' add operations by Theta(n^2)
     * Resizing by additive constant 'c' requires space that is at most: 2 * [maxListSize - 1] + c 
+    
 ---
 
 ## LinkedList
