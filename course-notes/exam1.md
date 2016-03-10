@@ -469,7 +469,7 @@ void quickSort(int arr[], int left, int right) {
 
 ## Compression
 * Goal: reduce size of data (reduce storage space --> reduce storage cost) and reduce time needed to retrieve/transmit data
-* Compression Ration = ``` (Original Data Size) / (Compressed Data Size) ```
+* Compression Ratio = ``` (Original Data Size) / (Compressed Data Size) ```
 * Lossless vs. Lossy
   * Lossless = data is not changed (originalData == decompressedData)
     * Used in text file compression (where data changes are not acceptable)
@@ -484,7 +484,7 @@ void quickSort(int arr[], int left, int right) {
   * Compression = O(n)
   * Decompression = O(n)
   * Complexity is determined based on the fact that the complexity of computing the home bucket in a hash table is O(1)
-  
+
 ---
 
 ## Trees
