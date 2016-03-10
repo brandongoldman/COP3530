@@ -505,6 +505,53 @@ void quickSort(int arr[], int left, int right) {
 * Tree Degree = max(Node Degree)
 
 #### Binary Trees
-* Node may not have degree > 2
-* May be empty
+* Node may not have degree > 2, but can be empty
 * Subtrees are ordered (greater value will either always be on left or always be on right)
+* Minimum Number of Nodes = ``` height = h ```
+* Maximum Number of Nodes = ``` 2^h - 1 ```
+* Right-Skewed Binary Tree
+  * Transforms into array whose length is between ```n+1``` and ```2^n```
+
+#### Traversal Methods
+* Preorder (VLR)
+  * Visit --> Left --> Right
+  ```
+   		   (a)		// first: visit a
+  		   / \		// second: go left to b
+  		(b)  (c)	// third: go right to c
+  	Output: abc
+  ```
+
+* Inorder (LVR)
+  * Left --> Visit --> Right
+  ```
+   		   (a)		// first: go left to b
+  		   / \		// second: visit a
+  		(b)  (c)	// third: go right to c
+  	Output: bac
+  ```
+
+  * Shortcut: Projection! (output is derived from going left to right and printing)
+
+* Postorder (LRV)
+  * Left --> Right --> Visit
+  ```
+   		   (a)		// first: go left to b
+  		   / \		// second: go right to c
+  		(b)  (c)	// third: visit a
+  	Output: bca
+  ```
+
+* Level Order (Zig Zag)
+  * Left --> Right --> Down --> Left --> Right ...
+  ```
+   		   (a)		// first: visit a
+  		   / \		// second: go down to first element on next level (b)
+  		(b)  (c)	// third: go right (c) and repeat
+  	Output: abc
+  ```
+
+  * Traversal Applications
+    * Make a Clone (use Postorder Traversal to clone left, right, and visit)
+    * Determine Height (```Height = 1 + Max(heightLeft, heightRight)```)
+    * Determine Number of Nodes (use any method desired and increment a counter)
