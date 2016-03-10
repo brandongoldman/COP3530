@@ -458,8 +458,12 @@ void quickSort(int arr[], int left, int right) {
 * Functions get, put, and remove take O(1) time
 * How To Map Into Home Bucket: ``` homeBucket = hash(theKey) % (numberOfBuckets) ```
 * The number of ints that get mapped (hashed) to bucket i is: ``` (2^32)/b ``` where b is a prime & odd integer
-
-
+* How To Handle Overflow
+  * Search hash table for empty bucket
+  * Eliminate overflows by permitting each bucket to keep a list of all pairs for which it is a home bucket
+* Hash Table Design
+  * Dynamic Resizing (whenever loading density > threshold, rehash into table that is twice current size)
+  * Fixed Size (when you have a known maximum number of pairs)
 
 ---
 
