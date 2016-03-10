@@ -625,3 +625,15 @@ void quickSort(int arr[], int left, int right) {
 * Best Fit
   * Place item in first available spot large enough to hold item
   * If items are sorted in decreasing order, then you are performing Best Fit Decreasing
+
+#### Binary Search Trees
+* Definition: a binary tree where each node has a (key,value)
+  * All keys in left subtree of x are smaller than that in x
+  * All keys in right subtree of x are larger than that in x
+* Operations:
+  * find(key) 			= O(log n) or O(n) worst (due to height)
+  * insert(key,value)	= O(log n) or O(n) worst (due to height)
+  * erase(key)			= O(log n) or O(n) worst
+  * ascend()			= O(n)
+  * get(index)			= O(n) or O(log n) if indexed
+  * delete(index)		= O(n) or O(log n) if indexed
