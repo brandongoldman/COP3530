@@ -14,6 +14,7 @@ These notes were compiled using material found online as well as in the presenta
   * [Quick Sort](#quick-sort)
 * [LinearList](#linearlist)
 * [LinkedList](#linkedlist)
+* [Arrays](#arrays)
 * [Stacks](#stacks)
 * [Queues](#queues)
 * [Hash Maps](#hash-maps)
@@ -314,7 +315,7 @@ void quickSort(int arr[], int left, int right) {
   * begin() = returns iterator positioned at element 0 of list
   * end() = returns iterator positioned one past last element
 
-### Pointers
+#### Pointers
 * Chain = linked list in which each node represents one element
   * Elements are chained together using links (pointers)
   * Last node has a NULL pointer
@@ -349,10 +350,29 @@ void quickSort(int arr[], int left, int right) {
 * Simulated Pointers = allocate chain of nodes without having to relink / can free chain of nodes in O(1) time when first/last nodes are known
 
 
-### Doubly Linked Lists
+#### Doubly Linked Lists
 * Additions to front and end become O(1)
 * Can be used to reduce worst-case run time of linear list add/remove/get (by nearly 50%)
   * When searching for index, if index > listSize/2, then start at right hand side (end) of list and search leftwards
+
+---
+
+## Arrays
+* 1-D Arrays --> ``` a[0] a[1] a[2] ... a[n] ```
+  * Maps into contiguous memory locations
+  * Space Overhead = 4 bytes
+
+* 2-D Arrays --> ``` a[0][0] a[0][1] ... a[0][n]; a[1][0] a[1][1] ... a[1][n]; ```
+  * Space Overhead = 4 * [# of rows + 1] bytes
+
+* Row-Major Mapping
+  * How to Convert 2D --> 1D: ``` x[i][j] in 2-D Array == ic + j in 1-D Array ```
+  * Disadvantage = need contiguous memory of size r*c (row * col)
+
+* Column-Major Mapping
+  * How to Convert 2D --> 1D:
+    * Column elements are collected from top to bottom (columns are collected left to right)
+    * Given Matrix: [a,b,c,d; e,f,g,h; i,j,k,l] we convert to get --> y = {a,e,i,b,f,c,g,k,d,h,l}
 
 ---
 
