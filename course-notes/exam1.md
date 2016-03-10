@@ -566,3 +566,24 @@ void quickSort(int arr[], int left, int right) {
   * Make a Clone (use Postorder Traversal to clone left, right, and visit)
   * Determine Height (```Height = 1 + Max(heightLeft, heightRight)```)
   * Determine Number of Nodes (use any method desired and increment a counter)
+
+#### Priority Queues
+* Complexity:
+  * empty(), size(), top() = O(1)
+  * insert(), remove() = O(log n)
+  * Trick: ``` When you see a tree, think of the log. ``` --> O(log n) is typical for a tree
+* Complexity of Sorting:
+  * n Insert Operations = O(n log n)
+  * n Remove Max Operations = O(n log n)
+  * Total Time = ``` O(n log n) + O(n log n) = O(2n log n) => O(n log n)``` [vs. O(n^2) from previous algorithms!]
+
+#### Heap Sort
+* Uses max priority queue that is implemented as a heap (O(n) time)
+* Application of Heap Sort: LPT Scheduling
+  * LPT = Longest Processing Time First (largest to smallest)
+  * Does NOT guarentee minimum finish time schedules such that ```(LPT Finish Time) / (Minimum Finish Time) <= 4/3 - 1/(3*(# of machines))```
+  * Time Complexity to Sort = O(n log n) ('n' = number of jobs)
+  * Time Complexity to Schedule Jobs = O(m*n) ('m' = number of machines)
+* Huffman Codes = type of optimal frefix code (useful in lossless compression / LZW method)
+* Heap Height = ```log_2(n + 1)```
+* Time Complexity of Insert & Remove = O(log n)
