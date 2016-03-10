@@ -300,7 +300,6 @@ void quickSort(int arr[], int left, int right) {
     * Increases cost of 'n' inserts by Theta(n)
     * Increases cost of 'n' add operations by Theta(n^2)
     * Resizing by additive constant 'c' requires space that is at most: 2 * [maxListSize - 1] + c 
-    
 ---
 
 ## LinkedList
@@ -313,6 +312,27 @@ void quickSort(int arr[], int left, int right) {
     * Equality Testing using == and !=
   * begin() = returns iterator positioned at element 0 of list
   * end() = returns iterator positioned one past last element
+
+* Chain = linked list in which each node represents one element
+  * Elements are chained together using links (pointers)
+  * Last node has a NULL pointer
+  * Example: Get the Second Element: ``` checkIndex(2); desiredNode = firstNode->next->next; return desiredNode->element; ```
+  * Deletions can be made with ```delete deletedNode;```
+  * How to Insert a New Node at Index 'n':
+  
+    ```
+    // step 1: find node with index 'n-1'
+    // step 2: create a new node and set data and link fields
+    chainNode<char> *newNode = new chainNode<char>('f', beforeNode->next);
+    // step 3: link beforeNode to newNode
+    beforeNode->next = newNode;
+    ```
+    
+### Doubly Linked Lists
+* Additions to front and end become O(1)
+* Can be used to reduce worst-case run time of linear list add/remove/get (by nearly 50%)
+  * When searching for index, if index > listSize/2, then start at right hand side (end) of list and search leftwards
+
 
 
 ---
