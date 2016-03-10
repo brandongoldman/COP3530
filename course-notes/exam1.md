@@ -375,11 +375,25 @@ void quickSort(int arr[], int left, int right) {
 * Sparse Matrices = many elements are zero (single linear list in row-major order)
   * Each nonzero element is represented by ``` list = [row; column; value] ```
   * Node Structure: ``` [row, col; value, next] ```
-  
+
 
 ---
 
 ## Stacks
+* Properties of Stack:
+  * Linear List
+  * Two Ends: top & bottom
+  * Additions and Removals occur from top of stack only
+* Time Complexity:
+
+  ```
+  empty() = O(1)
+  size() = O(1)
+  top() = O(1)
+  push() = O(1)
+  pop() = O(1)
+  ```
+
 
 ---
 
