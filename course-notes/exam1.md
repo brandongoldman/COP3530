@@ -491,21 +491,20 @@ void quickSort(int arr[], int left, int right) {
 * Trees are useful for hierarchically ordered data
 * Elements of a Tree:
     ```
-    				  [Root]
+    				  [Root]			// Root = element at top of hierarchy (tree)
     				  /
-    	           [Child]
+    	           [Child]				// Children = elements next in hierarchy (under root)
     		       /      \
-    	 [Grandchild]    [Grandchild]
+    	 [Grandchild]    [Grandchild]   // Grandchildren = elements next in hierarchy
            /      \		   /      \
-    	[Leaf]  [Leaf]  [Leaf]  [Leaf]
+    	[Leaf]  [Leaf]  [Leaf]  [Leaf]  // Leaves = elements without children
     ```
 
-  * Root = element at top of hierarchy (tree) --> *root is at level 0*
-  * Children = elements next in hierarchy (under root)
-  * Grandchildren = elements next in hierarchy (under child root)
-  * Leaves = elements without children
 * Height of Tree = h = # of Levels
 * Node Degree = # of Children
 * Tree Degree = max(Node Degree)
 
 #### Binary Trees
+* Node may not have degree > 2
+* May be empty
+* Subtrees are ordered (greater value will either always be on left or always be on right)
