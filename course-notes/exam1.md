@@ -394,11 +394,37 @@ void quickSort(int arr[], int left, int right) {
   pop() = O(1)
   ```
 
-
 ---
 
 ## Queues
+* Properties of Queue:
+  * Linear List
+  * Two Ends: front & rear
+  * Additions are done at rear
+  * Removals are done at front
+* Time Complexity:
 
+  ```
+  empty() = O(1)
+  size() = O(1)
+  front() = O(1)
+  back() = O(1)
+  push() = O(size) or O(1) if in array representation
+  pop() = O(1)
+  ```
+
+* Limitations of a Queue:
+  * When the addition of an element will cause the queue to be full, increase the array size
+    * Define a boolean variable lastOperationIsPush
+      * Following each push, set lastOperationIsPush to true
+      * Following each pop, set lastOperationIsPush to false
+        * Queue is EMPTY iff: ``` (front == rear) && !lastOperationIsPush ```
+        * Queue is FULL iff: ``` (front == rear) && lastOperationIsPush ```
+    * Define an integer variable size
+      * Following each push, do size++
+      * Following each pop, do size--
+        * Queue is EMPTY iff: ``` (size == 0) ```
+        * Queue is FULL iff: ``` (size == arrayLength) ```
 ---
 
 ## Hash Maps
