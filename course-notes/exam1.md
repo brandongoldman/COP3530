@@ -425,10 +425,40 @@ void quickSort(int arr[], int left, int right) {
       * Following each pop, do size--
         * Queue is EMPTY iff: ``` (size == 0) ```
         * Queue is FULL iff: ``` (size == arrayLength) ```
-        
 ---
 
 ## Hash Maps
+#### Dictionaries
+* Collections of Pairs: (key,element) --> pairs have different keys
+* Operations
+  * find(theKey)
+  * erase(theKey)
+  * insert(theKey, theElement)
+* Time Complexity (Array Representation)
+  * find(theKey) = O(size)
+  * insert(theKey, theElement) = O(size)
+  * erase(theKey) = O(size)
+* Time Complexity (Sorted Array)
+  * find(theKey) = O(log size)
+  * insert(theKey, theElement) = O(log size)
+  * erase(theKey) = O(size)
+* Time Complexity (Unsorted Chain)
+  * find(theKey) = O(size)
+  * insert(theKey, theElement) = O(size) to verify duplicate, O(1) to add at left end
+  * erase(theKey) = O(size)
+* Time Complexity (Sorted Chain)
+  * find(theKey) = O(size)
+  * insert(theKey, theElement) = O(size) to verify duplicate, O(1) to put at proper place
+  * erase(theKey) = O(size)
+
+#### Hash Tables
+* Worst-case time complexity for find, insert, and erase is O(size) --> best-case is O(1)
+* Ideal Hashing has a bucket at every position of the array (each bucket holds one dictionary pair)
+* Functions get, put, and remove take O(1) time
+* How To Map Into Home Bucket: ``` homeBucket = hash(theKey) % (numberOfBuckets) ```
+* The number of ints that get mapped (hashed) to bucket i is: ``` (2^32)/b ``` where b is a prime & odd integer
+
+
 
 ---
 
