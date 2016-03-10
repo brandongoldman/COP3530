@@ -64,3 +64,35 @@ Explanation:
 
 
 Quiz 4:
+1. Select all that apply:
+Answer: There is only one path from root to any leaf of a tree, a tree has no cycle, any node in a binary tree can have up to two children
+Explanation:
+
+2. In a full binary tree, represented as an array (1-indexed), what is the index of node 26's grandparent?
+Answer: 6
+Explanation:
+
+3. Which of the following combinations should be available to construct a unique binary tree?
+Answer: Preorder and Inorder
+Explanation:
+
+4. What does the following code do?
+      func(binaryTreeNode p, binaryTreeNode q)
+      {
+          if(p==null && q==null)
+          {
+              return true;
+          }
+          else if(p==null || q==null)
+          {  
+              return false;
+          }
+          else
+          {
+              return (p.val == q.val &&
+                      func(p.left,q.left) &&
+                      func(p.right,q.right));
+          }
+      }
+Answer: Check if Two Trees are Identical 
+Explanation:
