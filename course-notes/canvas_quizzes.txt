@@ -56,7 +56,8 @@ Explanation:
 
 2. Given a hash table that uses %b (b = 13) hash function and linear open addressing for overflow handling, insert the following numbers: 2 , 3 , 15 , 29 , 5 , 16 -- What is the index of 16 in the resulting hash table? (Indexes start from 0)
 Answer: 7
-Explanation: 
+Explanation: 2 would go to index 2, 3 would go to index 3, 15 would go to index 4 since 15%13=2 but index 2 and 3 are full, 29 would go to 5 for the same reason, 5 would go to 6 for the same reason. Therefore 16 goes to 7.
+
 
 3. In a stock market scenario, we need to keep track of thousands of changes to the values of different companies per second. Every one minute, the company whose value had the largest change should be displayed. Every one hour, we need to announce the top 3 companies in terms of market value. Which of the following data structures suits the needs of this application best?
 Answer: Hash Table
