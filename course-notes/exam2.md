@@ -6,6 +6,7 @@ These notes were compiled using material found online as well as in the presenta
 ## Table of Contents
 
 * [Indexed Binary Search Tree](#indexed-binary-search-tree)
+* [Balanced Binary Search Tree](#balanced-binary-search-tree)
 
 ---
 
@@ -13,3 +14,6 @@ These notes were compiled using material found online as well as in the presenta
 * BST where each node has additional field
   * leftSize = # nodes in left subtree
 * Rank = position in inorder (ascending) key order
+
+## Balanced Binary Search Tree
+*
