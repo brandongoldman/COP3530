@@ -43,8 +43,7 @@ void Inorder(Node *n)
 	}
 
 	Inorder(n->left);       // Visit left subtree
-	cout << n->data << " ";
-	// printf("%c ",n->data);  // Print data
+	cout << n->data << " "; // print
 	Inorder(n->right);      // Visit right subtree
 }
 
@@ -55,12 +54,9 @@ void Postorder(Node *n)
 		return;
 	}
 
-	Postorder(n->left);    // Visit left subtree
-	Postorder(n->right);   // Visit right subtree
-	
-	cout << n->data << " ";
-
-	// printf("%c ",n->data); // Print data
+	Postorder(n->left);      // Visit left subtree
+	Postorder(n->right);     // Visit right subtree
+	cout << n->data << " ";  // print
 }
 
 void addNode(Node* n, string* s, int* lChild, int* rChild, int x) 
@@ -104,8 +100,6 @@ int main()
 	}
 
 	// create Node for root
-	// Node* n = NULL;
-
 	Node* n = new Node(nodeVals[initialVal]);
 	addNode(n, nodeVals, lChildVals, rChildVals, initialVal);
 
