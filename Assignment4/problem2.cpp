@@ -29,7 +29,8 @@ void Levelorder(Node *n)
 	{
 		return;
 	}
-
+	
+	// create queue
 	queue<Node*> q;
 
 	// push root
