@@ -22,6 +22,7 @@ struct Node
 	}
 };
 
+// preorder traversal
 void Preorder(Node *n)
 {
 	if(n == NULL)
@@ -35,6 +36,7 @@ void Preorder(Node *n)
 	Preorder(n->right);     // Visit right subtree
 }
 
+// inorder traversal
 void Inorder(Node *n) 
 {
 	if(n == NULL) 
@@ -47,6 +49,7 @@ void Inorder(Node *n)
 	Inorder(n->right);      // Visit right subtree
 }
 
+// postorder traversal
 void Postorder(Node *n) 
 {
 	if(n == NULL)
@@ -59,6 +62,7 @@ void Postorder(Node *n)
 	cout << n->data << " ";  // print
 }
 
+// insert nodes
 void addNode(Node* n, string* s, int* lChild, int* rChild, int x) 
 {
 	if(lChild[x] != -1) 
