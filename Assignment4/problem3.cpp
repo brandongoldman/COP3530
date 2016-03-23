@@ -23,6 +23,32 @@ struct Node
 	}
 };
 
+Node* createTree(vector<string> &p, vector<string> &i, int pStart, int pEnd, int iStart, int iEnd)
+{
+	int val = iStart;
+
+	if(iStart > iEnd)
+	{
+		return NULL;
+	}
+
+	// create string for p[pEnd]
+	string inorder = p[pEnd];
+
+	// create instance of node Node(string)
+	Node* root = new Node(inorder);
+
+	for(val; val <= iEnd && i[val] != inorder; val++)
+	{}
+
+	int size = val - iStart;
+	
+	root->left = createTree(p, i, iStart, val - 1, pStart, pStart + size - 1);
+	root->right = createTree(p, i, val + 1, iEnd, pStart + size, pEnd);
+
+	return root;
+}
+
 Node* createNode(vector<string> &p, vector<string> &i)
 {
 	// no nodes in postorder
@@ -46,19 +72,7 @@ Node* createNode(vector<string> &p, vector<string> &i)
 	int pSize = p.size() - 1;
 	int iSize = i.size() - 1;
 
-	return createTree(p, 0, pSize, i, 0, iSize);
-}
-
-Node* createTree(vector<string> &p, int pStart, int pEnd, vector<string> &i, int iStart, int iEnd)
-{
-	int valueAt = iStart;
-
-	if(start > end)
-	{
-		return NULL;
-	}
-
-	
+	return createTree(p, i, 0, pSize, 0, iSize);
 }
 
 void Levelorder(Node *n)
@@ -112,6 +126,8 @@ int main()
     	cin >> in;
     	inorder.push_back(in);
     }
+
+	Node* root = createNode(postorder, inorder);
 
     return 0;
 }
