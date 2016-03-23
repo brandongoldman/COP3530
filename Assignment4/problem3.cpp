@@ -32,19 +32,26 @@ Node* createTree(vector<string> &p, vector<string> &i, int pStart, int pEnd, int
 		return NULL;
 	}
 
+	if(iStart == iEnd)
+	{
+		return new Node (i[iEnd]);
+	}
+
 	// create string for p[pEnd]
 	string inorder = p[pEnd];
 
 	// create instance of node Node(string)
 	Node* root = new Node(inorder);
 
-	for(val; val <= iEnd && i[val] != inorder; val++)
-	{}
+	for(; val <= iEnd && i[val] != inorder; val++)
+	{
+
+	}
 
 	int size = val - iStart;
 	
-	root->left = createTree(p, i, iStart, val - 1, pStart, pStart + size - 1);
-	root->right = createTree(p, i, val + 1, iEnd, pStart + size, pEnd);
+	root->left = createTree(p, i, pStart, val - 1, iStart, val - 1);
+	root->right = createTree(p, i, val, pEnd - 1, val + 1, iEnd);
 
 	return root;
 }
@@ -128,6 +135,7 @@ int main()
     }
 
 	Node* root = createNode(postorder, inorder);
+	Levelorder(root);
 
     return 0;
 }
