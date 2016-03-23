@@ -23,17 +23,43 @@ struct Node
 	}
 };
 
-void createTree(vector<string> &p, vector<string> &i)
+Node* createNode(vector<string> &p, vector<string> &i)
 {
+	// no nodes in postorder
 	if(p.empty())
 	{
 		return NULL;
 	}
 
+	// no nodes in inorder
 	if(i.empty())
 	{
 		return NULL;
 	}
+
+	// size of postorder doesn't match inorder	
+	if(p.size() != i.size())
+	{
+		return NULL;
+	}
+
+	int pSize = p.size() - 1;
+	int iSize = i.size() - 1;
+
+	return createTree(p, 0, pSize, i, 0, iSize);
+}
+
+Node* createTree(vector<string> &p, int pStart, int pEnd, vector<string> &i, int iStart, int iEnd)
+{
+	static int positionAtZero = 0;
+	if(start > end)
+	{
+		return NULL;
+	}
+
+	
+
+
 }
 
 void Levelorder(Node *n)
