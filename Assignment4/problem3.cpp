@@ -51,15 +51,14 @@ Node* createNode(vector<string> &p, vector<string> &i)
 
 Node* createTree(vector<string> &p, int pStart, int pEnd, vector<string> &i, int iStart, int iEnd)
 {
-	static int positionAtZero = 0;
+	int valueAt = iStart;
+
 	if(start > end)
 	{
 		return NULL;
 	}
 
 	
-
-
 }
 
 void Levelorder(Node *n)
@@ -91,72 +90,6 @@ void Levelorder(Node *n)
 		}
 	}
 }
-
-void 
-
-    static TreeNode* createTreeFromPreOrder(int inorder[],int preorder[], int start, int end)
-    {
-        static int position = 0;
-        if(start>end)
-        {
-            return NULL;
-        }
-        TreeNode* temp = new TreeNode();
-        temp->value = preorder[position++];
-        if(start==end)
-        {
-            return temp;
-        }
-        int mid = search(inorder,start,end,temp->value);
-        temp->left = createTreeFromPreOrder(inorder,preorder,start, mid-1);
-        temp->right = createTreeFromPreOrder(inorder,preorder,mid+1,end);
-        return temp;
-    }
-
-    static TreeNode* createTreeFromPostOrder(int inorder[],int postorder[], int start, int end)
-    {
-        static int position = end;
-        
-        if(start>end)
-        {
-            return NULL;
-        }
-
-        TreeNode* temp = new TreeNode();
-        temp->value = postorder[position--];
-        
-        if(start==end)
-        {
-            return temp;
-        }
-
-        int mid = search(inorder,start,end,temp->value);
-        temp->right = createTreeFromPostOrder(inorder,postorder,mid+1,end);
-        temp->left = createTreeFromPostOrder(inorder,postorder,start, mid-1);
-        return temp;
-    }
-
-    static TreeNode* createTreeFromLevelOrder(int inorder[],int levelorder[], int start, int end,int level)
-    {
-        if(start>end)
-        {
-            return NULL;
-        }
-
-        TreeNode* temp = new TreeNode();
-        temp->value = levelorder[level-1];
-
-        if(start==end)
-        {
-            return temp;
-        }
-
-        int mid = search(inorder,start,end,temp->value);
-        temp->left = createTreeFromLevelOrder(inorder,levelorder,start, mid-1,2*level);
-        temp->right = createTreeFromLevelOrder(inorder,levelorder,mid+1,end,2*level+1);
-        return temp;
-    }
-};
 
 int main()
 {
