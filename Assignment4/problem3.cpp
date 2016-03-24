@@ -51,7 +51,6 @@ Node* createTree(vector<string> &p, vector<string> &i, int pStart, int pEnd, int
 		}
 
 		int size = val - iStart;
-		
 		root->left = createTree(p, i, pStart, pStart + val - (iStart + 1), iStart, val - 1);
 		root->right = createTree(p, i, val + pStart - iStart, pEnd - 1, val + 1, iEnd);
 
