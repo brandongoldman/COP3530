@@ -6,6 +6,6 @@
 * Brandon Goldman
 * Michael Riccardi
 * Harrison Magoutas
-* Ryan Gruszcyk
+* Ryan Gruszczyk
 
 ---
