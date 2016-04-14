@@ -9,15 +9,15 @@ const int MAX_NUM_NODES = 10000;
 const int MIN_HEIGHT = 1;
 int arr[MAX_NUM_NODES + 1];
 bool checkIfTree;
-map<int, vector<int>> graph;
+map<int, vector<int>> treeContruct;
 
 // check if input is tree
 void dfsTree(int node, int index)
 {
     arr[node] = MIN_HEIGHT;
 
-    // for each node value in graph
-    for(int node_val:graph[node])
+    // for each node value in map
+    for(int node_val:treeContruct[node])
     {
         if(!arr[node_val])
         {
@@ -40,8 +40,9 @@ int main()
     for(int i = 0; i < num_edges; i++)
     {
         cin >> node1 >> node2;
-        graph[node1].push_back(node2);
-        graph[node2].push_back(node1);
+        // send node values to map
+        treeContruct[node1].push_back(node2);
+        treeContruct[node2].push_back(node1);
     }
 
     checkIfTree = true;
