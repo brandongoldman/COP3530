@@ -23,7 +23,8 @@ void dfsTree(int node, int index)
         {
             dfsTree(node_val, node);
         }
-
+        
+        // check if cycle
         else if(arr[node_val] && node_val != index)
             checkIfTree = false;
     }
