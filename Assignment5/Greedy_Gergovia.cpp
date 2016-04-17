@@ -10,6 +10,8 @@ int main()
 	int inhabitants;
 	int houseAddress;
 	bool isWineSalesman = true;
+	// int numOfWorkers, totalHouses;
+	// long long is needed to pass judge according to comments on SPOJ
 	long long numOfWorkers, totalHouses;
 	int houses[MAX_NUM + 1];
 
