@@ -7,25 +7,26 @@ using namespace std;
 // create map and global variables
 const int MAX_NUM_NODES = 10000;
 const int MIN_HEIGHT = 1;
-int arr[MAX_NUM_NODES + 1];
+int track_nodes[MAX_NUM_NODES + 1];
 bool checkIfTree;
 map<int, vector<int>> treeContruct;
 
 // check if input is tree
 void dfsTree(int node, int index)
 {
-    arr[node] = MIN_HEIGHT;
+    track_nodes[node] = MIN_HEIGHT;
 
     // for each node value in map
     for(int node_val:treeContruct[node])
     {
-        if(!arr[node_val])
+        // recursion to check if tree remains true
+        if(!track_nodes[node_val])
         {
             dfsTree(node_val, node);
         }
-        
-        // check if cycle
-        else if(arr[node_val] && node_val != index)
+
+        // is there cycle?
+        else if(track_nodes[node_val] && node_val != index)
             checkIfTree = false;
     }
 }
@@ -38,6 +39,7 @@ int main()
 
     int node1;
     int node2;
+
     for(int i = 0; i < num_edges; i++)
     {
         cin >> node1 >> node2;
@@ -49,9 +51,10 @@ int main()
     checkIfTree = true;
     dfsTree(MIN_HEIGHT, MIN_HEIGHT - 1);
 
-    for(int j = 1; j <= num_nodes; j++) 
+    // check if it is a tree
+    for(int j = MIN_HEIGHT; j <= num_nodes; j++) 
     {
-        if(!arr[j]) 
+        if(!track_nodes[j]) 
         {
             checkIfTree = false;
         }
