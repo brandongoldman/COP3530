@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int MAX_NUM = 100001;
+const int MAX_NUM = 100000;
 
 int main() 
 {
@@ -11,7 +11,7 @@ int main()
 	int houseAddress;
 	bool isWineSalesman = true;
 	long long numOfWorkers, totalHouses;
-	int houses[MAX_NUM];
+	int houses[MAX_NUM + 1];
 
 	while (isWineSalesman)
 	{
@@ -36,10 +36,13 @@ int main()
 		{
 			cin >> houseAddress;
 			houses[i] = houseAddress;
+			// track number of workers with houses to see if possible
 			numOfWorkers = numOfWorkers + abs(totalHouses); 	// abs to convert pos num
+			// number of houses must be feasible with number of employees
 			totalHouses = totalHouses + houses[i];
 		}
 
+		// if there exists a wine salesman for the house..
 		if (isWineSalesman || !isWineSalesman)
 		{
 			cout << numOfWorkers << endl;
